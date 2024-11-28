@@ -17,11 +17,13 @@ class App extends React.Component {
       headers: { "Content-Type": "application/json" }, // 올바른 'headers' 소문자 사용
     };
 
-    fetch("http://localhost:8080/users", requestOptions)
+    fetch(
+      "http://api-server-loadbalancer-1490395816.ap-northeast-2.elb.amazonaws.com/users",
+      requestOptions
+    )
       .then((response) => response.json())
       .then(
         (data) => {
-          console.log(data);
           this.setState({ items: data });
         },
         (error) => {
